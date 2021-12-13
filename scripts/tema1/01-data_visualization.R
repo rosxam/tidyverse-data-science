@@ -1,19 +1,21 @@
 #Data Visualization - 11 de Mayo de 2018
 library(tidyverse)
 
-#tidyverse 1.2.1 ──
-#✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-#✔ tibble  1.4.2     ✔ dplyr   0.7.4
-#✔ tidyr   0.8.0     ✔ stringr 1.3.1
-#✔ readr   1.1.1     ✔ forcats 0.3.0
-
+#tidyverse 1.3.1 --
+#v ggplot2 3.3.5     v purrr   0.3.4
+#v tibble  3.1.5     v dplyr   1.0.7
+#v tidyr   1.1.4     v stringr 1.4.0
+#v readr   2.0.2     v forcats 0.5.1
 #Los coches con motor más grande consumen más combustible 
 #que los coches con motor más pequeño.
 #La relación consumo / tamaño es lineal? Es no lineal? Es exponencial?
 #Es positiva? Es negativa?
 
+
 View(mpg)
-?mpg #help(mpg)
+
+?mpg # �s equivalent-> help(mpg)
+
 # displ: tamaño del motor del coche en litros
 # hwy: número de millas recorridas en autopista por galón de combustible (3.785411784 litros)
 
@@ -28,6 +30,7 @@ ggplot(data = mpg) +
 #PLANTILLA PARA HACER UNA REPRESENTACIÓN GRÁFICA CON GGPLOT
 #ggplot(data = <DATA_FRAME>) +
 #  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+# aes �s l'estetica
 
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = class, y = drv))
