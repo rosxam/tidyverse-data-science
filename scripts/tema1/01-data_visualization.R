@@ -53,9 +53,9 @@ ggplot(data = mpg) +
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 
-#Elecci√≥n manual de est√©ticas
+#Elecci√≥n manual de est√©ticas, color= "red" esta defora de la funciÛ aes, es un valor global
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy), color = "red")
+  geom_point(mapping = aes(x = displ, y = hwy), shape = 25, color = "red", fill= "green")
 # color = nombre del color en formato string
 # size = tama√±o del punto en mm
 # shape = forma del punto con n√∫meros desde el 0 al 25
@@ -63,7 +63,12 @@ ggplot(data = mpg) +
 # 15- 20: son formas rellenas de color, por tanto se le puede cambiar el color
 # 21 - 25: son formas con borde y relleno, y se les puede cambiar el color (borde) y el fill (relleno)
 
-d=data.frame(p=c(0:25))
+#intrucciÛ per veure la darrera gr‡fica emprada.
+
+last_plot()
+
+#aquest script es per tenir les formes de shape, podem reduir a 0:25
+d=data.frame(p=c(0:25, 32:127))
 ggplot() +
   scale_y_continuous(name="") +
   scale_x_continuous(name="") +
@@ -74,12 +79,19 @@ ggplot() +
 
 
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy), 
-             shape = 23, size = 10, color = "red", 
+  geom_point(mapping = aes(x = displ,
+                           y = hwy
+                           ), 
+             shape = 23,
+             size = 10, 
+             color = "red", 
              fill = 'yellow')
 
-ggplot(data = mpg) + 
+
+#aquÌ feim un filtre a on displ < 5 
+ggplot(data = mpg) + #(hem de tenir en compte quel simbol + sempre va a final de linea)
   geom_point(mapping = aes(x=displ, y = hwy, color = displ<5))
+
 
 
 ##FACETS
@@ -120,6 +132,12 @@ ggplot(data = mpg) +
   geom_smooth(mapping = aes(x=displ, y = hwy, linetype = drv, color = drv))
 
 ?geom_smooth
+
+
+# un altra forma d'emprar, aqui posem les variables al principi, obtingut de l'ajuda
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point() +
+  geom_smooth()
 
 
 ggplot(data = mpg) + 
