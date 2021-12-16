@@ -14,6 +14,10 @@ library(tidyverse)
 
 View(mpg)
 
+view(economics)
+
+?economics
+
 ?mpg # Ès equivalent-> help(mpg)
 
 # displ: tama√±o del motor del coche en litros

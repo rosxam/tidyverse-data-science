@@ -1,0 +1,22 @@
+---
+title: "Visualizació dades ggplot"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Apunts de visulització de dades
+
+```{r , echo=TRUE}
+library(tidyverse)
+```
+
+**Representació d'una variable**
+
+```{r Una_variable, echo=TRUE, message=TRUE, warning=TRUE}
+c <- ggplot(mpg, aes(hwy)) 
+c2 <- ggplot(mpg)
+c+ geom_area(stat = "bin", color= "red", fill= "green")
+```
