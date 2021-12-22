@@ -126,7 +126,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x=displ, y =hwy))
 
 ggplot(data = mpg) + 
-  geom_smooth(mapping = aes(x=displ, y = hwy))
+  geom_smooth(mapping = aes(x=displ, y = hwy, group = drv))
 
 ggplot(data = mpg) + 
   geom_smooth(mapping = aes(x=displ, y = hwy, linetype = drv))
@@ -208,13 +208,35 @@ ggplot(data = mpg, mapping = aes(x=displ, y = hwy) ) +
 ## Ejemplo del dataset de diamantes
 View(diamonds)
 
-ggplot(data = diamonds) + 
+ggplot(data = diamonds, aes(x=cut)) + 
   geom_bar(mapping = aes(x = cut))
+
+
+#proves per treure gràfica amb percentatges no funciona bé
+
+ggplot(data = diamonds, aes(x=cut, y=((..count..)/sum(..count..)))) + 
+  geom_bar(aes(y = (..count..)/sum(..count..)))+
+  geom_text(aes(label=y))+
+  scale_y_continuous(labels=scales::percent)
+
+ggplot(data = diamonds, aes(x=cut)) + 
+  geom_bar(mapping = aes(x = cut, y =..prop.., group= 1))+
+  scale_y_continuous(labels=scales::percent)+
+  geom_text(aes(label=y)
 
 ?geom_bar
 
+?stat_bin
+
+?geom_histogram
+
+ggplot(diamonds, aes(carat)) +
+  geom_histogram()
+
+
 ggplot(data = diamonds)+
   stat_count(mapping = aes(x=cut))
+
 
 
 demo_diamonds <- tribble(
@@ -226,9 +248,29 @@ demo_diamonds <- tribble(
   "Ideal",     21551
 )
 
+view(demo_diamonds)
+
+
 ggplot(data = demo_diamonds) + 
   geom_bar(mapping = aes(x=cut, y = freqs), 
            stat = "identity")
+
+ggplot (data = demo_diamonds)+
+  geom_bar()
+
+?stat # com funciona la funció stat
+
+library(help = "stats")
+
+p = ggplot(diamonds, aes(x=price))
+
+p + stat_bin(geom="bar") # Equivalent to p + geom_histogram()
+p + stat_bin(geom="area")
+p + stat_bin(geom="point")
+p + stat_bin(geom="line")
+
+
+
 
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))
