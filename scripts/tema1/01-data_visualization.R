@@ -219,10 +219,9 @@ ggplot(data = diamonds, aes(x=cut, y=((..count..)/sum(..count..)))) +
   geom_text(aes(label=y))+
   scale_y_continuous(labels=scales::percent)
 
-ggplot(data = diamonds, aes(x=cut)) + 
+ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut, y =..prop.., group= 1))+
-  scale_y_continuous(labels=scales::percent)+
-  geom_text(aes(label=y)
+  scale_y_continuous(labels=scales::percent)
 
 ?geom_bar
 
