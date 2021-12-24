@@ -73,7 +73,8 @@ filter(flights, month == 5 | month == 6)
 
 filter(flights, month == 5 | 6)# NO FUNCIONA...
 
-may_june <- filter(flights, month %in% c(5,6))
+may_june <- filter(flights, month %in% c(5,6)) # %in% significa en del vector que hem pasat
+
 #LEYES DE MORGAN
 #!(x&y) == (!x)|(!y)
 #!(x|y) == (!x)&(!y)
