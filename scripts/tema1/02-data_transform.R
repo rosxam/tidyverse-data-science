@@ -1,13 +1,22 @@
 library(tidyverse)
+
 library(nycflights13)
+
+#per poder comprovar els diferents datasets que hi ha ::
+
+nycflights13::flights
 
 
 tt<-nycflights13::flights
+
 ?flights
+
 View(flights)
+
 ?tibble
 
 head(flights)
+
 tail(flights)
 
 #tibble es un data frame mejorado para tidyverse
@@ -44,14 +53,20 @@ may19 <- filter(flights, month == 5, day == 19)
 
 filter(flights, month == 5)
 
-2 == 2
+2 == 2 #Resultats T
 
-sqrt(2)^2 == 2
+sqrt(2)^2 == 2 # resultat F degut els problemes de decimals
+
 sqrt(2)^2 - 2
-near(sqrt(2)^2, 2)
+
+near(sqrt(2)^2, 2) # amb aquesta funció ja es T
+
 ?near
+
 1/pi * pi == 1
+
 1/49 * 49 == 1
+
 near(1/49*49, 1)
 
 filter(flights, month == 5 | month == 6)
